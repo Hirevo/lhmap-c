@@ -16,6 +16,7 @@ add_library(hmap STATIC
     src/lhmap_values
     src/lhmap_get
     src/lhmap_set
+    src/lhmap_remove
     src/lhmap_reserve
     src/lhmap_shrink_to_fit
     src/lhmap_for_each)

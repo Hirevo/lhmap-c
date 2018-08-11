@@ -7,11 +7,11 @@
 
 #include "hmap.h"
 
-void lhmap_clear(hmap_t *this, bool free_values)
+void lhmap_clear(hmap_t *this, bool free_payloads)
 {
 	if (this == 0)
 		return;
-	lvec_clear(this->key_table, true);
-	lvec_clear(this->value_table, free_values);
+	lvec_clear(this->key_table, free_payloads);
+	lvec_clear(this->value_table, free_payloads);
 	this->size = 0;
 }

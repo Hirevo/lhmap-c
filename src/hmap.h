@@ -15,11 +15,6 @@ typedef struct hmap_s {
 	vec_t *value_table;
 } hmap_t;
 
-typedef struct hmap_tuple_s {
-    void *key;
-    void *value;
-} hmap_tuple_t;
-
 /*
 ** Construction
 */
@@ -31,7 +26,7 @@ hmap_t *lhmap_merge(hmap_t *this, hmap_t *other);
 /*
 ** Destruction
 */
-void lhmap_clear(hmap_t *this, bool free_payloads);
+void lhmap_clear(hmap_t *this, bool free_values);
 void lhmap_drop(hmap_t *this);
 
 /*
@@ -44,9 +39,9 @@ size_t lhmap_size(hmap_t *this);
 /*
 ** Value access
 */
-void *lhmap_get(hmap_t *this, void *key);
-bool lhmap_set(hmap_t *this, void *key, void *value);
-hmap_tuple_t lhmap_remove(hmap_t *this, void *key);
+void *lhmap_get(hmap_t *this, char *key);
+bool lhmap_set(hmap_t *this, char *key, void *value);
+void *lhmap_remove(hmap_t *this, char *key);
 bool lhmap_reserve(hmap_t *this, size_t capacity);
 void lhmap_shrink_to_fit(hmap_t *this);
 
@@ -54,4 +49,4 @@ void lhmap_shrink_to_fit(hmap_t *this);
 ** Value iteration
 */
 void lhmap_for_each(hmap_t *this,
-	void (*callback)(void *context, void *key, void *elem), void *context);
+	void (*callback)(void *context, char *key, void *elem), void *context);

@@ -5,14 +5,15 @@
 ** lhmap_get
 */
 
-#include "hmap.h"
+#include "intern_hmap.h"
 
-void *lhmap_get(hmap_t *this, void *key)
+void *lhmap_get(hmap_t *this, char *key)
 {
-	ssize_t idx;
+    ssize_t idx;
 
-	if (this == 0)
-		return (0);
-	idx = lvec_index_of(this->key_table, key);
-	return ((idx != -1) ? lvec_at(this->value_table, idx) : 0);
+    if (this == 0)
+        return (0);
+    idx = lvec_find_index(this->key_table,
+        (bool (*)(void *, void *, size_t))(intern_lhmap_find_key), key);
+    return ((idx != -1) ? lvec_at(this->value_table, idx) : 0);
 }

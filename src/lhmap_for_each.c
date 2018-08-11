@@ -8,7 +8,7 @@
 #include "hmap.h"
 
 void lhmap_for_each(hmap_t *this,
-	void (*callback)(void *context, void *key, void *elem), void *context)
+	void (*callback)(void *context, char *key, void *elem), void *context)
 {
 	if (this == 0 || callback == 0)
 		return;

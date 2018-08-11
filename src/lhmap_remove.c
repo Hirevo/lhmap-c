@@ -5,19 +5,19 @@
 ** lhmap_remove
 */
 
-#include "hmap.h"
+#include "intern_hmap.h"
 
-hmap_tuple_t lhmap_remove(hmap_t *this, void *key)
+void *lhmap_remove(hmap_t *this, char *key)
 {
     ssize_t idx;
-    hmap_tuple_t ret = {0, 0};
 
     if (this == 0)
-        return (ret);
-    idx = lvec_index_of(this->key_table, key);
+        return (0);
+    idx = lvec_find_index(this->key_table,
+        (bool (*)(void *, void *, size_t))(intern_lhmap_find_key), key);
     if (idx == -1)
-        return (ret);
-    ret.key = lvec_remove(this->key_table, idx);
-    ret.value = lvec_remove(this->value_table, idx);
-    return (ret);
+        return (0);
+    this->size -= 1;
+    free(lvec_remove(this->key_table, idx));
+    return (lvec_remove(this->value_table, idx));
 }

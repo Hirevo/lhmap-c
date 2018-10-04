@@ -20,6 +20,11 @@ add_library(hmap STATIC
     src/lhmap_reserve.c
     src/lhmap_shrink_to_fit.c
     src/lhmap_for_each.c
-    src/intern_lhmap_find_key.c)
+    src/intern_lhmap_find_key.c
+)
+add_dependencies(hmap vec)
+target_include_directories(hmap PUBLIC src)
+target_link_libraries(hmap vec)
 
-target_include_directories(hmap PRIVATE "../vec/src")
+
+

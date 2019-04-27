@@ -9,5 +9,5 @@
 
 vec_t *lhmap_keys(hmap_t *this)
 {
-	return (this ? this->key_table : 0);
+    return (this ? this->key_table : 0);
 }

@@ -9,5 +9,5 @@
 
 size_t lhmap_size(hmap_t *this)
 {
-	return (this ? this->size : 0);
+    return (this ? this->size : 0);
 }

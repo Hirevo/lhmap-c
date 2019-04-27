@@ -9,5 +9,5 @@
 
 vec_t *lhmap_values(hmap_t *this)
 {
-	return (this ? this->value_table : 0);
+    return (this ? this->value_table : 0);
 }

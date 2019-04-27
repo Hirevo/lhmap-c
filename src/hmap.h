@@ -10,9 +10,9 @@
 #include "vec.h"
 
 typedef struct hmap_s {
-	size_t size;
-	vec_t *key_table;
-	vec_t *value_table;
+    size_t size;
+    vec_t *key_table;
+    vec_t *value_table;
 } hmap_t;
 
 /*
@@ -49,4 +49,4 @@ void lhmap_shrink_to_fit(hmap_t *this);
 ** Value iteration
 */
 void lhmap_for_each(hmap_t *this,
-	void (*callback)(void *context, char *key, void *elem), void *context);
+    void (*callback)(void *context, char *key, void *elem), void *context);
